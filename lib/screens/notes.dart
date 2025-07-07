@@ -55,6 +55,8 @@ class _NotesScreenState extends State<NotesScreen> {
       if (mounted) {
         if (success) {
           _showSnackBar('Note added successfully!');
+          // Optionally, you can refresh the notes list here
+          await notesProvider.fetchNotes(authProvider.user!.uid);
         } else {
           _showSnackBar(notesProvider.errorMessage, isError: true);
         }
